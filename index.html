@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robotics Improvement Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background-color: #0f4c81;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #144e7a;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+      color: white;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    h2 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    canvas {
+      max-width: 100%;
+    }
+    .todo {
+      list-style: none;
+      padding-left: 0;
+    }
+    .todo li {
+      margin: 10px 0;
+    }
+    .status {
+      font-size: 1.1em;
+      padding: 10px;
+      background: #e9f7ef;
+      border: 1px solid #2ecc71;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #0f4c81;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Robotics Improvement Dashboard</h1>
+  <p>Track progress, analyze data, and manage robotics innovations</p>
+</header>
+
+<nav>
+  <a href="#overview">Overview</a>
+  <a href="#stats">Statistics</a>
+  <a href="#logs">Project Logs</a>
+  <a href="#todo">To-Do</a>
+  <a href="#status">Live Status</a>
+</nav>
+
+<main>
+  <section id="overview" class="section">
+    <h2>Overview</h2>
+    <p>This dashboard provides an insight into ongoing robotics improvement projects, system diagnostics, development progress, and future tasks.</p>
+  </section>
+
+  <section id="stats" class="section">
+    <h2>Performance Statistics</h2>
+    <canvas id="robotChart" width="400" height="200"></canvas>
+  </section>
+
+  <section id="logs" class="section">
+    <h2>Project Logs</h2>
+    <ul>
+      <li>✅ Integrated LIDAR sensor for obstacle detection (Sept 10, 2025)</li>
+      <li>✅ Improved servo precision for arm movement (Sept 12, 2025)</li>
+      <li>🔄 Testing AI navigation model (ETA: Sept 20, 2025)</li>
+    </ul>
+  </section>
+
+  <section id="todo" class="section">
+    <h2>To-Do List</h2>
+    <ul class="todo">
+      <li><input type="checkbox" /> Integrate thermal camera</li>
+      <li><input type="checkbox" /> Calibrate joint sensors</li>
+      <li><input type="checkbox" /> Update firmware to v2.3</li>
+      <li><input type="checkbox" /> Add voice command interface</li>
+    </ul>
+  </section>
+
+  <section id="status" class="section">
+    <h2>Live Robot Status</h2>
+    <div class="status" id="liveStatus">
+      Loading status...
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Robotics Lab. All rights reserved.
+</footer>
+
+<!-- JavaScript section -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Chart setup
+  const ctx = document.getElementById('robotChart').getContext('2d');
+  const robotChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Sep 1', 'Sep 5', 'Sep 10', 'Sep 15', 'Sep 17'],
+      datasets: [{
+        label: 'Task Completion (%)',
+        data: [20, 40, 55, 75, 85],
+
